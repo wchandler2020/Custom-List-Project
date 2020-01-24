@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    class Program
+    
+    public class WilliamsCustomList<T>
     {
-        static void Main(string[] args)
+        T[] items;
+        int Count;
+        public void Add(T item)
         {
-            
+           
         }
     }
+   
+
+
 }
