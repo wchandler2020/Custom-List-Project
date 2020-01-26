@@ -13,11 +13,11 @@ namespace CustomListTest
             //Arrange
             WilliamsCustomList<int> willsList = new WilliamsCustomList<int>();
             int value = 10;
-
+            int expectedResult = 1;
             //Act
             willsList.Add(value);
             //Assert
-            Assert.AreEqual(1, willsList.Count);          
+            Assert.AreEqual(expectedResult, willsList.count);          
         }
 
         [TestMethod]
@@ -30,11 +30,12 @@ namespace CustomListTest
             int expectResult = 6;
             //Act
             willsList.Add(value);
-            
-            //Assert
-            Assert.AreEqual(expectResult, willsList[0]);
+
+            //Assert //[0]
+            Assert.AreEqual(expectResult, willsList.getItemAtIndex(0));
         }
 
+        [TestMethod]
         public void VerifyCountAfterAddSecondValue()
         {
             //Arrange
@@ -46,10 +47,11 @@ namespace CustomListTest
             willsList.Add(value);
             willsList.Add(secondValue);
 
-            //Assert
-            Assert.AreEqual(expectResult, willsList[1]);
+            //Assert //[1]
+            Assert.AreEqual(expectResult, willsList.getItemAtIndex(1));
         }
 
+        [TestMethod]
         public void VerifyCountAfterAddMultipleValue()
         {
             //Arrange
@@ -68,10 +70,11 @@ namespace CustomListTest
             willsList.Add(fourthValue);
             willsList.Add(fifthValue);
 
-            //Assert
-            Assert.AreEqual(expectResult, willsList[4]);
+            //Assert //[4]
+            Assert.AreEqual(expectResult, willsList.getItemAtIndex(4));
         }
 
+        [TestMethod]
         public void VerifyTotalIndexCountValue()
         {
             //Arrange
@@ -91,7 +94,7 @@ namespace CustomListTest
             willsList.Add(fifthValue);
 
             //Assert
-            Assert.AreEqual(expectResult, willsList.Count);
+            Assert.AreEqual(expectResult, willsList.count);
         }
 
     }
