@@ -9,9 +9,21 @@ namespace CustomList
     
     public class WilliamsCustomList<T>
     {
-        T[] items = new T [4];
+        T[] items = new T[4];
         public int count = 0;
         public int capacity = 4;
+
+        //indexer
+        public T this[int i]
+        {
+            get { return items[i]; }
+            set { items[i] = value; }
+        }
+
+        //public T getItemAtIndex(int i)
+        //{
+        //    return items[i];
+        //}
 
         public void Add(T item)
         {
@@ -20,7 +32,7 @@ namespace CustomList
 
             if(count == capacity)
             {
-                //we need a new, bigger array
+                //I will need a new, bigger and better array
                 T[] newItemList = new T[capacity + 4];
                 //need to copy existing items to the new array
                 for(int i = 0; i < items.Length; i++)
@@ -33,11 +45,11 @@ namespace CustomList
             }
         }
 
-        public T getItemAtIndex(int index)
+        public void Remove(T item)
         {
-            return items[index];
+            items[count] = item;
+            count-=count;
         }
-
         
     }
 }

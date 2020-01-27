@@ -1,6 +1,5 @@
-﻿using System;
+﻿using CustomList;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CustomList;
 
 namespace CustomListTest
 {
@@ -17,7 +16,7 @@ namespace CustomListTest
             //Act
             willsList.Add(value);
             //Assert
-            Assert.AreEqual(expectedResult, willsList.count);          
+            Assert.AreEqual(expectedResult, willsList.count);
         }
 
         [TestMethod]
@@ -32,7 +31,7 @@ namespace CustomListTest
             willsList.Add(value);
 
             //Assert //[0]
-            Assert.AreEqual(expectResult, willsList.getItemAtIndex(0));
+            Assert.AreEqual(expectResult, willsList[0]);
         }
 
         [TestMethod]
@@ -48,7 +47,7 @@ namespace CustomListTest
             willsList.Add(secondValue);
 
             //Assert //[1]
-            Assert.AreEqual(expectResult, willsList.getItemAtIndex(1));
+            Assert.AreEqual(expectResult, willsList[1]);
         }
 
         [TestMethod]
@@ -71,7 +70,7 @@ namespace CustomListTest
             willsList.Add(fifthValue);
 
             //Assert //[4]
-            Assert.AreEqual(expectResult, willsList.getItemAtIndex(4));
+            Assert.AreEqual(expectResult, willsList[4]);
         }
 
         [TestMethod]
@@ -97,5 +96,17 @@ namespace CustomListTest
             Assert.AreEqual(expectResult, willsList.count);
         }
 
+        [TestMethod]
+        public void VerifyCountAfterRemoveFirstValue()
+        {
+            WilliamsCustomList<int> willsList = new WilliamsCustomList<int>();
+            int value = 6;
+            int secondValue = 12;
+            int expectResult = 12;
+            //Act
+            willsList.Remove(value);
+            //Assert //[1]
+            Assert.AreEqual(expectResult, willsList[0]);
+        }
     }
 }
