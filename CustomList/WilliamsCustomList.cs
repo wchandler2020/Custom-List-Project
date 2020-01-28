@@ -13,6 +13,7 @@ namespace CustomList
         T[] items = new T[4];
         public int count = 0;
         public int capacity = 4;
+        
 
         //indexer
         public T this[int i]
@@ -33,6 +34,8 @@ namespace CustomList
 
             if(count == capacity)
             {
+               //update capacity
+                capacity += 4;
                 //I will need a new, bigger and better array
                 T[] newItemList = new T[capacity + 4];
                 //need to copy existing items to the new array
@@ -41,8 +44,7 @@ namespace CustomList
                     newItemList[i] = items[i];
                 }
                 items = newItemList;
-                //update capacity
-                capacity += 4;
+                
             }
         }
 
@@ -71,17 +73,23 @@ namespace CustomList
             items = newItemList;
         }
 
-        //public void Zip()
-        //{
-
-        //}
-
+        public void Zip()
+        {
+            WilliamsCustomList<int> newListItems = new WilliamsCustomList<int>() { 10, 30, 50};
+            WilliamsCustomList<int> newListItems2 = new WilliamsCustomList<int>() { 20, 40, 60 };
+            WilliamsCustomList<int> newListItems3 = new WilliamsCustomList<int>();
+            for (int i = 0; i < newListItems.count; i++)
+            {
+                newListItems3.Add(newListItems[i]);
+                newListItems3.Add(newListItems2[i]);
+                Console.WriteLine(newListItems3[i]);
+            }
+            Console.ReadLine();
+        }
 
         public IEnumerator GetEnumerator()
         {
             throw new NotImplementedException();
         }
-
-
     }
 }
