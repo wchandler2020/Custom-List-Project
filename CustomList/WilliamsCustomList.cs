@@ -73,23 +73,24 @@ namespace CustomList
             items = newItemList;
         }
 
-        public void Zip()
+        public static WilliamsCustomList<T> Zip(WilliamsCustomList<T> odd, WilliamsCustomList<T> even)
         {
-            WilliamsCustomList<int> newListItems = new WilliamsCustomList<int>() { 10, 30, 50};
-            WilliamsCustomList<int> newListItems2 = new WilliamsCustomList<int>() { 20, 40, 60 };
-            WilliamsCustomList<int> newListItems3 = new WilliamsCustomList<int>();
-            for (int i = 0; i < newListItems.count; i++)
+            WilliamsCustomList<T> myList = new WilliamsCustomList<T>();
+            for (int i = 0; i < odd.count; i++)
             {
-                newListItems3.Add(newListItems[i]);
-                newListItems3.Add(newListItems2[i]);
-                Console.WriteLine(newListItems3[i]);
+                myList.Add(odd[i]);
+                myList.Add(even[i]);
             }
-            Console.ReadLine();
+            return myList;
         }
 
         public IEnumerator GetEnumerator()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < count; i++)
+            {
+                yield return items[i];
+            }
+            yield return "Done";
         }
     }
 }

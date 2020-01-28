@@ -109,5 +109,20 @@ namespace CustomListTest
             //Assert //[1]
             Assert.AreEqual(expectResult, willsList[0]);
         }
+
+        [TestMethod]
+        public void VerifyZip()
+        {
+            //Arrange
+            WilliamsCustomList<int> odd = new WilliamsCustomList<int>() { 1, 3, 5 };
+            WilliamsCustomList<int> even = new WilliamsCustomList<int>() { 2, 4, 6 };
+            WilliamsCustomList<int> result;
+            int expectedResults = 5;
+
+            //Act
+            result = WilliamsCustomList<int>.Zip(odd, even);
+            //Assert
+            Assert.AreEqual(expectedResults, result[4]);
+        }
     }
 }
