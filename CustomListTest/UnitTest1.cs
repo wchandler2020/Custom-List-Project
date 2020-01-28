@@ -105,6 +105,7 @@ namespace CustomListTest
             int expectResult = 12;
             //Act
             willsList.Remove(value);
+            willsList.Add(secondValue);
             //Assert //[1]
             Assert.AreEqual(expectResult, willsList[0]);
         }

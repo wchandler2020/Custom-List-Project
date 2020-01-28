@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 namespace CustomList
 {
     
-    public class WilliamsCustomList<T>
+    public class WilliamsCustomList<T> : IEnumerable
     {
         T[] items = new T[4];
         public int count = 0;
@@ -25,7 +26,7 @@ namespace CustomList
         //    return items[i];
         //}
 
-        public void Add(T item)
+        public void Add(T item) 
         {
             items[count] = item;
             count++;
@@ -47,9 +48,40 @@ namespace CustomList
 
         public void Remove(T item)
         {
-            items[count] = item;
-            count-=count;
+            T[] newItemList = new T[capacity];
+            bool isFound = false;
+            for (int i = 0; i < count; i++)
+            {
+                if (item.Equals(items[i]))
+                {
+                    isFound = true;
+                    count--;
+                }
+
+                if (isFound == true)
+                {
+                    
+                    newItemList[i] = items[i + 1];
+                }
+                else
+                {
+                    newItemList[i] = items[i];
+                }
+            }
+            items = newItemList;
         }
-        
+
+        //public void Zip()
+        //{
+
+        //}
+
+
+        public IEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }
