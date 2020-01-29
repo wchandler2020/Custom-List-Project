@@ -15,6 +15,7 @@ namespace CustomList
         public int capacity = 4;
         
 
+
         //indexer
         public T this[int i]
         {
@@ -91,6 +92,45 @@ namespace CustomList
                 yield return items[i];
             }
             yield return "Done";
+        }
+
+        public static WilliamsCustomList<T> AddMethod(WilliamsCustomList<T> odd, WilliamsCustomList<T> even)
+        {
+            WilliamsCustomList<T> newList = new WilliamsCustomList<T>();
+                for (int i = 0; i < even.count; i++)
+                {
+                    newList.Add(even[i]);
+                }
+                for (int i = 0; i < odd.count; i++)
+                {
+                    newList.Add(odd[i]);
+                }
+            return newList;
+        }
+
+        public static WilliamsCustomList<T> MinusMethod(WilliamsCustomList<T> odd, WilliamsCustomList<T> even)
+        {
+            WilliamsCustomList<T> newList = new WilliamsCustomList<T>();
+            for (int i = 0; i < even.count; i++)
+            {
+                newList.Remove(even[i]);
+            }
+            for (int i = 0; i < odd.count; i++)
+            {
+                newList.Remove(odd[i]);
+            }
+            return newList;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < count; i++)
+            {
+                sb.Append(items[i]);
+            }
+            return sb.ToString();
         }
     }
 }

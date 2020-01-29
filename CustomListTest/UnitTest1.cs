@@ -99,6 +99,7 @@ namespace CustomListTest
         [TestMethod]
         public void VerifyCountAfterRemoveFirstValue()
         {
+            //Arrange
             WilliamsCustomList<int> willsList = new WilliamsCustomList<int>();
             int value = 6;
             int secondValue = 12;
@@ -110,6 +111,26 @@ namespace CustomListTest
             Assert.AreEqual(expectResult, willsList[0]);
         }
 
+        [TestMethod]
+
+        public void VerifyCountAfterRemoveMultipleValues()
+        {
+            //Arrange
+            WilliamsCustomList<int> willsList = new WilliamsCustomList<int>();
+            int value = 6;
+            int secondValue = 12;
+            int thirdValue = 18;
+            int fourthValue = 24;
+            int expectedResult = 24;
+            //Act
+            willsList.Remove(value);
+            willsList.Remove(secondValue);
+            willsList.Remove(thirdValue);
+            willsList.Add(fourthValue);
+            //Assert
+            Assert.AreEqual(expectedResult, willsList[0]);
+        }
+        
         [TestMethod]
         public void VerifyZip()
         {
@@ -123,6 +144,34 @@ namespace CustomListTest
             result = WilliamsCustomList<int>.Zip(odd, even);
             //Assert
             Assert.AreEqual(expectedResults, result[4]);
+        }
+
+        [TestMethod]
+        public void ConvertingABasicIntToString()
+        {
+            //Arrange
+            WilliamsCustomList<int> willsList = new WilliamsCustomList<int>() { 10, 20, 30, 40, 50 };
+            string expectResults = "1020304050";
+            string result;
+
+            //Act
+            result = willsList.ToString();
+            //Assert
+            Assert.AreEqual(expectResults, result);
+        }
+
+        [TestMethod]
+        public void ConvertingAIncompleteIntToString()
+        {
+            //Arrange
+            WilliamsCustomList<int> willsList = new WilliamsCustomList<int>() { 10, 20, 30 };
+            string expectResults = "102030";
+            string result;
+
+            //Act
+            result = willsList.ToString();
+            //Assert
+            Assert.AreEqual(expectResults, result);
         }
     }
 }
